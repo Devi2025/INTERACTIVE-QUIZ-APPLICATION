@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Quiz App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #854848;
+      padding: 2rem;
+    }
+    .quiz-container {
+      max-width: 600px;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: auto;
+    }
+    .question {
+      font-size: 1.2rem;
+    }
+    .choices {
+      margin-top: 1rem;
+    }
+    .choice {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background: #eee;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .choice:hover {
+      background: #ddd;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .score {
+      margin-top: 1.5rem;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <div id="question" class="question"></div>
+    <div id="choices" class="choices"></div>
+    <div id="feedback" class="feedback"></div>
+    <div id="score" class="score"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "What is the capital of France?",
+        choices: ["Berlin", "Madrid", "Paris", "Rome"],
+        answer: "Paris"
+      },
+      {
+        question: "Which language runs in a web browser?",
+        choices: ["Java", "C", "Python", "JavaScript"],
+        answer: "JavaScript"
+      },
+      {
+        question: "What does CSS stand for?",
+        choices: ["Central Style Sheets", "Cascading Style Sheets", "Cascading Simple Sheets", "Cars SUVs Sailboats"],
+        answer: "Cascading Style Sheets"
+      }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const currentQuestion = questions[currentQuestionIndex];
+      document.getElementById("question").textContent = currentQuestion.question;
+      const choicesDiv = document.getElementById("choices");
+      choicesDiv.innerHTML = "";
+
+      currentQuestion.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.textContent = choice;
+        button.classList.add("choice");
+        button.onclick = () => checkAnswer(choice);
+        choicesDiv.appendChild(button);
+      });
+
+      document.getElementById("feedback").textContent = "";
+    }
+
+    function checkAnswer(selected) {
+      const correct = questions[currentQuestionIndex].answer;
+      const feedback = document.getElementById("feedback");
+
+      if (selected === correct) {
+        score++;
+        feedback.textContent = "Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = `Wrong! Correct answer: ${correct}`;
+        feedback.style.color = "red";
+      }
+
+      currentQuestionIndex++;
+      setTimeout(() => {
+        if (currentQuestionIndex < questions.length) {
+          loadQuestion();
+        } else {
+          showFinalScore();
+        }
+      }, 1500);
+    }
+
+    function showFinalScore() {
+      document.getElementById("question").textContent = "Quiz Complete!";
+      document.getElementById("choices").innerHTML = "";
+      document.getElementById("feedback").textContent = "";
+      document.getElementById("score").textContent = `Your final score: ${score} / ${questions.length}`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
