@@ -1,4 +1,4 @@
-#INTERACTIVE QUIZ APPLICATION
+#**INTERACTIVE QUIZ APPLICATION **
 
 COMPANY:CODTECH IT SOLUTIONS
 
@@ -16,7 +16,7 @@ Project Title: Interactive Quiz Application
 
 Description:
 
-The Interactive Quiz Application is a dynamic and user-friendly web-based platform designed to create, manage, and take quizzes in real-time. The application allows users to test their knowledge on various topics through engaging, timed, and interactive quizzes. It features multiple question formats such as multiple choice, true/false, and short answer questions.Key functionalities include user authentication, quiz creation by administrators or teachers, real-time score calculation, and detailed performance feedback. The application supports both single-player and multiplayer modes, making it ideal for self-assessment, classroom use, or competitive learning environments.The platform is built using modern web technologies to ensure a responsive design, smooth user experience, and cross-device compatibility. With its intuitive interface and robust backend, the Interactive Quiz Application offers a seamless learning and evaluation experience for users of all ages.
+This project is a frontend web development task aimed at building an interactive quiz application. The application allows users to answer multiple-choice questions and receive instant feedback based on their selections. It is developed using HTML, CSS, and JavaScript, with a focus on dynamic user interaction, responsive design, and smooth user experience. Key features include a timer, score tracking, question navigation, and result display. The project demonstrates proficiency in DOM manipulation, event handling, and UI/UX design within a purely frontend environment.
 
 #OUTPUT
 
